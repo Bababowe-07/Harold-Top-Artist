@@ -1,0 +1,774 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background:linear-gradient(to bottom, #002233, #220044);
+    background-repeat: repeat;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    
+}
+
+nav ul {
+    display: flex;
+    gap: 20px; /* Ensures spacing */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #00a2ff;
+    background: linear-gradient(to bottom, #29239f, rgb(15, 0, 114));
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2.5px solid #4e33fb;
+    box-shadow: 0 0 3px #4e33fb;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    background: #012133;
+    box-shadow: 0 0 20px #0E133A;
+    color: white;
+}
+
+/* Blur other links when one is hovered */
+nav ul:hover li a:not(:hover) {
+    filter: blur(5px);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.home {
+    display: flex;
+    justify-content: center; /* Centers the images horizontally */
+    align-items: center; /* Aligns them at the same height */
+    gap: 200px; /* Space between images */
+    margin-top: 13px; /* Moves images slightly 
+    up */
+    min-height: 100vh; 
+}
+
+.cloud-img, .mind-img {
+    width: 500px; /* Adjust size */
+    height: auto;
+    border-radius:50px;
+    }
+.about {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url('music.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10%;
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 100px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.bio {
+    max-width: 600px;
+    flex: 1;
+    text-align: justify;
+}
+
+.bio h2 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ecdefe;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 5px solid #ecdefe;
+    width: 0;
+    transition: none;
+}
+
+.container:hover .bio h2 {
+    animation: typing 2.5s steps(30, end) forwards, blink 0.6s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.bio p {
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 350px;
+    height: auto;
+    border-radius: 10%;
+    box-shadow: 0 0 15px rgba(128, 166, 255, 0.653);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-image img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(128, 166, 255, 0.9);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container.show {
+    animation: fadeSlideUp 2s ease-out;
+}
+
+.Genre {
+    width: 100%;
+    position: relative;
+    padding-top: 5%;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.Genre h2 {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.Genre-Container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px;
+    white-space: nowrap;
+    max-width: 100%;
+    justify-content: flex-start;
+    scroll-padding-left: 50%;
+    margin-left: 50px;
+}
+
+.genre-box {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+}
+
+.genre-box:hover {
+    transform: scale(1.05);
+}
+
+.Genre-Container:hover .genre-box:not(:hover) {
+    filter: blur(5px);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.genre-box img {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.genre-box p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.Genre-Container::after {
+    content: "";
+    flex: 0 0 20px;
+}
+
+.Genre-Container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.Genre-Container::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.Genre-Container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff4757, #eccc68);
+}
+
+.Genre-Container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 0 10px;
+}
+ 
+.top-artists {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 50px;
+    position: relative;
+    gap: 50px;
+}
+
+.Zild {
+    background: url('Zildpic.jpg') center/cover no-repeat;
+    position: relative;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.Laufey {
+    background: url('Laufeypic.png') center/cover no-repeat;
+    position: relative;
+}
+
+.MCR {
+    background: url('MCRpic.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.Mitski {
+    background: url('Mitskipic.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.RealityClub {
+    background: url('Reality.jpeg') center/cover no-repeat;
+    position: relative;
+}
+
+.SOAD {
+    background: url('System.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.Radiohead {
+    background: url('Radio.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.Dilaw {
+    background: url('Dilawpic.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.ArcticMonkeys {
+    background: url('Arctic.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.Zild::after, .Laufey::after, .MCR::after, .Mitski::after, 
+.RealityClub::after, .SOAD::after, .Radiohead::after, 
+.Dilaw::after, .ArcticMonkeys::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 50px 150px rgba(0, 0, 0, 0.7), 
+                inset 0px -50px 150px rgba(0, 0, 0, 0.7);
+    filter: blur(1px);
+    z-index: 1;
+}
+.artist-card {
+    max-width:50%;
+    flex: 1;
+    padding: 10px 20px;
+    position: relative;
+    border-radius: 15px;
+    color: white;
+    z-index: 2;
+    font-family: 'Times New Roman', serif;
+    line-height: 1.5;
+    text-shadow: 4px 4px 20px rgba(0, 0, 0, 1);
+}
+    
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.artist-card, .video-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.artist-card.active, .video-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.artist-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.artist-card h2 {
+    font-size: 2m;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.artist-card h2::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 90%;
+    background: rgba(0, 0, 0, 0.3);
+    filter: blur(10px);
+    z-index: -1;
+    border-radius: 15px;
+}
+
+.artist-card p {
+    font-size: 1.2em;
+    font-weight: b;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.video-container {
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    z-index: 10;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-opacity {
+    width: 100%;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.video-container video:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+#video-player {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.video-opacity:focus,
+.video-opacity:active {
+    opacity: 1;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.contact-info, .social-media {
+    margin: 10px;
+}
+
+.contact-info h3, .social-media h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-info p a {
+    color: #00aeff;
+    text-decoration: none;
+}
+
+.contact-info p a:hover {
+    text-decoration: underline;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-media img:hover {
+    transform: scale(1.2);
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+@media (max-width: 375px) {
+    body {
+        font-size: 14px;
+        text-align: center;
+        padding: 5px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 10px;
+        padding: 5px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 15px;
+        padding: 12px;
+        margin-left: 40px;
+    }
+
+    .cloud-img, .mind-img {
+        width: 90%;
+        border-radius: 20px;
+    }
+
+    .about {
+        padding: 20px 5%;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bio h2 {
+        font-size: 24px;
+    }
+
+    .bio p {
+        font-size: 16px;
+    }
+
+    .profile-image img {
+        width: 80%;
+    }
+
+    .Genre h2 {
+        font-size: 24px;
+    }
+
+    .Genre-Container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .genre-box {
+        width: 90%;
+    }
+
+    .top-artists {
+        align-items: center;
+    }
+
+    .artist {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        width: 100%;
+        max-width: 375px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+
+    .artist-card {
+        width: 90%; /* Adjusted to avoid overflow */
+        max-width: 90%;
+        font-size: 14px;
+        padding: 10px;
+        margin: 0 auto;
+        text-align: center;
+        
+ 
+    }
+
+    .artist-card h2 {
+        font-size: 20px;
+    }
+
+    .video-container video {
+        width: 90%;
+    }
+
+    footer {
+        width: 100vw; /* Ensures full viewport width */
+        max-width: 100%; /* Prevents any extra spacing */
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100vw;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+    body {
+        font-size: 15px;
+        text-align: center;
+        padding: 0px;
+        width: 100vw;
+        min-height: 100bh;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 12px;
+        padding: 6px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        margin-left: 30px;
+    }
+
+    .cloud-img, .mind-img {
+        width: 85%;
+        border-radius: 20px;
+    }
+
+    .about {
+        padding: 25px 5%;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .bio h2 {
+        font-size: 26px;
+    }
+
+    .bio p {
+        font-size: 17px;
+    }
+
+    .profile-image img {
+        width: 85%;
+    }
+
+    .Genre h2 {
+        font-size: 26px;
+    }
+
+    .Genre-Container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .genre-box {
+        width: 85%;
+    }
+
+    .top-artists {
+        align-items: center;
+    }
+
+    .artist {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        width: 100%;
+        max-width: 425px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .artist-card {
+        width: 90%;
+        max-width: 90%;
+        font-size: 15px;
+        padding: 12px;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .artist-card h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .video-container video {
+        width: 90%;
+        max-width: 380px;
+        border-radius: 10px;
+    }
+
+    footer {
+        width: 100vw;
+        max-width: 100%;
+        margin: 0;
+        padding: 25px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
